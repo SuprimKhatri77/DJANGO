@@ -23,9 +23,24 @@
         <a href="{% url 'posts:list' %}">
             <span role="img" aria-label="Posts">📰</span>
         </a> |
+        {% if user.is_authenticated %}
+        <a href="{% url 'posts:new-post' %}">
+            <span role="img" aria-label="New Post" title="New Post">🆕</span>
+        </a> |
+        <form action="{% url 'users:logout' %}" class="logout" method="post">
+            {% csrf_token %}
+            <button class="logout-button" arial-label="User Logout" title="User logout">
+                👋
+            </button>
+        </form>
+        {% else %}
         <a href="{% url 'users:register' %}">
             <span role="img" aria-label="User registration">🚀</span>
+        </a> |
+        <a href="{% url 'users:login' %}">
+            <span role="img" aria-label="User login">🔏</span>
         </a> 
+        {% endif %}
     </nav>
 
     <main>
