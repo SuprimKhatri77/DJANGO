@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block title %}Login a New User{% endblock %} 
 {%block content %}
 <h3>Login a New User.</h3>
-<form action="/users/login/" method="post" class="form-with-validation">
+<form action="{% url 'users:login' %}" method="post" class="form-with-validation">
     <div>
   {% csrf_token %} {{form}}
  {% if request.GET.next %}
